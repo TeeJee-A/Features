@@ -59,7 +59,6 @@ export default function Carousel({
       return {
         transform: "translateX(0) translateY(0) scale(1)",
         zIndex: 30,
-        opacity: 1,
       };
     }
     if (position <= visibleRange) {
@@ -68,7 +67,6 @@ export default function Carousel({
           position * 20
         }px) scale(${1 - position * 0.1})`,
         zIndex: 30 - position,
-        opacity: 1 - position * 0.2,
         rotate: `${position * 5}deg`,
       };
     }
@@ -79,21 +77,19 @@ export default function Carousel({
           leftPos * 20
         }px) scale(${1 - leftPos * 0.1})`,
         zIndex: 30 - leftPos,
-        opacity: 1 - leftPos * 0.2,
         rotate: `${leftPos * -5}deg`,
       };
     }
     return {
       transform: "translateX(0) translateY(0) scale(0.7)",
       zIndex: 0,
-      opacity: 0,
     };
   };
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100 p-8">
+    <div className="flex flex-col items-center justify-center overflow-hidden min-h-screen bg-gray-100 p-8">
       <div className="relative w-full h-96 flex items-center justify-center">
-        <div className="relative w-80 h-80  ">
+        <div className="relative w-80 h-80">
           {cards.map((card, index) => (
             <div
               key={index}
